@@ -24,6 +24,7 @@ const NavOptions = () => {
 
   return (
     <FlatList
+      className={tw`flex flex-row items-center justify-center`}
       data={data}
       keyExtractore={(item) => item.id}
       horizontal
