@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const RideOptionsCard = () => {
   return (
     <SafeAreaView>
-      <Text>RideOptionsCard</Text>
+      <Text>Pick a Ride</Text>
     </SafeAreaView>
   );
 };

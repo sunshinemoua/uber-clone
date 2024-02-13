@@ -1,6 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import tw from "tailwind-react-native-classnames";
@@ -31,9 +38,13 @@ const NavOptions = () => {
       keyExtractore={(item) => item.id}
       horizontal
       renderItem={({ item }) => (
-        <TouchableOpacity
+        <Pressable
           onPress={() => navigation.navigate(item.screen)}
-          style={tw`p-2 pl-6 pb-8 bg-gray-200 m-2 w-40 h-60`}
+          style={({ pressed }) => [
+            pressed
+              ? tw`p-2 pl-6 pb-8 bg-gray-200 m-2 w-40 h-60 opacity-50`
+              : tw`p-2 pl-6 pb-8 bg-gray-200 m-2 w-40 h-60 opacity-100`,
+          ]}
           disables={!origin}
         >
           <View style={tw`${!origin && "opacity-20"}`}>
@@ -49,7 +60,7 @@ const NavOptions = () => {
               type="antdesign"
             ></Icon>
           </View>
-        </TouchableOpacity>
+        </Pressable>
       )}
     />
   );
