@@ -10,6 +10,7 @@ const Map = () => {
   const { origin } = useSelector((state) => state.nav);
   const { destination } = useSelector((state) => state.nav);
 
+  console.log("ORIGIN", origin);
   console.log("DESTI", destination);
 
   return (
