@@ -29,9 +29,7 @@ const NavFavorites = () => {
         renderItem={({ item: { location, destination, icon } }) => (
           <Pressable
             style={({ pressed }) => [
-              pressed
-                ? tw`flex-row items-center p-5 opacity-50`
-                : tw`flex-row items-center p-5 opacity-100`,
+              tw`flex-row items-center p-5 ${pressed && "opacity-50"}`,
             ]}
           >
             <Icon
