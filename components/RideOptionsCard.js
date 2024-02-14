@@ -28,17 +28,19 @@ const data = [
   },
 ];
 
+const SURGE_CHARGE_RATE = 1.5;
+
 const RideOptionsCard = () => {
   const navigation = useNavigation();
 
   const [selected, setSelected] = useState(null);
   const { travelTimeInformation } = useSelector((state) => state.nav);
 
-  const kmString = travelTimeInformation?.distance?.text;
-  kmString = kmString.slice(0, -2);
-  console.log(kmString);
+  // const kmString = travelTimeInformation?.distance?.text;
+  // kmString = kmString.slice(0, -2);
+  // console.log(kmString);
 
-  console.log("miles", kmString);
+  // console.log("miles", kmString);
 
   return (
     <View style={tw`bg-white flex-grow h-full`}>
@@ -52,7 +54,7 @@ const RideOptionsCard = () => {
           <Icon name="chevron-left" type="fontawesome" />
         </Pressable>
         <Text style={tw`text-center py-5 text-xl`}>
-          Select a Ride - {miles}
+          Select a Ride - {travelTimeInformation?.distance?.text}
         </Text>
         <View></View>
       </View>
@@ -75,7 +77,17 @@ const RideOptionsCard = () => {
               <Text style={tw`text-xl font-semibold`}>{title}</Text>
               <Text>{travelTimeInformation?.duration?.text}</Text>
             </View>
-            <Text style={tw`text-xl`}>$20</Text>
+            <Text style={tw`text-xl`}>
+              {new Intl.NumberFormat("en-usd", {
+                style: "currency",
+                currency: "USD",
+              }).format(
+                (travelTimeInformation?.duration?.value *
+                  SURGE_CHARGE_RATE *
+                  multiplier) /
+                  100
+              )}
+            </Text>
           </Pressable>
         )}
       />
