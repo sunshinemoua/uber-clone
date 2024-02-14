@@ -36,11 +36,11 @@ const RideOptionsCard = () => {
   const [selected, setSelected] = useState(null);
   const { travelTimeInformation } = useSelector((state) => state.nav);
 
-  // const kmString = travelTimeInformation?.distance?.text;
-  // kmString = kmString.slice(0, -2);
-  // console.log(kmString);
-
-  // console.log("miles", kmString);
+  const convertToMiles = (val) => {
+    const km = parseFloat(val);
+    const miles = km * 0.621371;
+    return miles.toFixed(2) + " mi";
+  };
 
   return (
     <View style={tw`bg-white flex-grow h-full`}>
@@ -54,7 +54,8 @@ const RideOptionsCard = () => {
           <Icon name="chevron-left" type="fontawesome" />
         </Pressable>
         <Text style={tw`text-center py-5 text-xl`}>
-          Select a Ride - {travelTimeInformation?.distance?.text}
+          Select a Ride -{" "}
+          {convertToMiles(travelTimeInformation?.distance?.text)}
         </Text>
         <View></View>
       </View>
@@ -91,7 +92,7 @@ const RideOptionsCard = () => {
           </Pressable>
         )}
       />
-      <View style={tw`mt-4`}>
+      <View style={tw`mt-auto border-t border-gray-200`}>
         <Pressable
           disabled={!selected}
           style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}
