@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import tw from "tailwind-react-native-classnames";
-import NavOptions from "../components/NavOptions";
+import TopNavOptions from "../components/TopNavOptions";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
@@ -13,11 +13,8 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
-      <View style={tw`p-5 mb-10`}>
-        <Image
-          style={{ width: 100, height: 100, resizeMode: "contain" }}
-          source={{ uri: "https://links.papareact.com/gzs" }}
-        />
+      <TopNavOptions />
+      {/* <View style={tw`p-5 mb-10`}>
         <GooglePlacesAutocomplete
           placeholder="Where From?"
           styles={{
@@ -46,9 +43,11 @@ const HomeScreen = () => {
           debounce={400}
           onFail={(test) => console.log("failed", test)}
         />
-        <NavOptions />
+        <Text> HELLO TESTING HIIII </Text>
+
         <NavFavorites />
-      </View>
+        <Text> HELLO TESTING </Text>
+      </View> */}
     </SafeAreaView>
   );
 };

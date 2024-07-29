@@ -16,6 +16,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import MapScreen from "./screens/MapScreen";
 import EatsScreen from "./screens/EatsScreen";
 import tw from "tailwind-react-native-classnames";
+import RidesScreen from "./screens/RidesScreen";
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -33,6 +34,11 @@ const App = () => {
                 name="HomeScreen"
                 component={HomeScreen}
                 v
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="RidesScreen"
+                component={RidesScreen}
                 options={{ headerShown: false }}
               />
               <Stack.Screen
