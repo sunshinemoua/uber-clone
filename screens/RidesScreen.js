@@ -1,10 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
+import { StyleSheet, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
-import TopNavOptions from "../components/TopNavOptions";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
-import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
 import NavFavorites from "../components/NavFavorites";
 
@@ -16,9 +14,14 @@ const RidesScreen = () => {
         styles={{
           container: {
             flex: 0,
+            borderRadius: "50%",
           },
           textInput: {
             fontSize: 18,
+            fontWeight: "bold",
+            backgroundColor: "#cccccc",
+            borderRadius: 50,
+            paddingHorizontal: 25,
           },
         }}
         onPress={(data, details = null) => {
