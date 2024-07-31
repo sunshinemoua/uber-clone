@@ -6,19 +6,41 @@ import tw from "tailwind-react-native-classnames";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
-import { setDestination } from "../slices/navSlice";
+import { setDestination, setOrigin } from "../slices/navSlice";
 import { useNavigation } from "@react-navigation/native";
 import NavFavorites from "./NavFavorites";
 
-const NavigateCard = () => {
+const NavigateCard = ({ handleCloseBottomSheet }) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
   return (
-    <View style={tw`bg-white`}>
-      <Text style={tw`text-center text-xl p-5`}>Hello, you </Text>
-      <View style={tw`border-t border-gray-200 flex-shrink`}>
-        <View>
+    <View style={tw`bg-white px-4`}>
+      <Text style={tw`text-center text-xl p-2`}>Plan your ride </Text>
+      <View>
+        <View style={tw`border border-black rounded-lg`}>
+          {/* CURRENT LOCATION */}
+          <GooglePlacesAutocomplete
+            placeholder="Where from?"
+            styles={toInputBoxStyles}
+            fetchDetails={true}
+            returnKeyType={"search"}
+            minlength={2}
+            onPress={(data, details = null) => {
+              dispatch(
+                setOrigin({
+                  location: details.geometry.location,
+                  description: data.description,
+                })
+              );
+            }}
+            enablePoweredByContainer={false}
+            query={{ key: GOOGLE_MAPS_APIKEY, language: "en" }}
+            nearbyPlacesAPI="GooglePlacesSearch"
+            debounce={400}
+          />
+          <View style={tw`border-t border-gray-300 `} />
+          {/* DESTINATION */}
           <GooglePlacesAutocomplete
             placeholder="Where to?"
             styles={toInputBoxStyles}
@@ -26,6 +48,7 @@ const NavigateCard = () => {
             returnKeyType={"search"}
             minlength={2}
             onPress={(data, details = null) => {
+              handleCloseBottomSheet();
               dispatch(
                 setDestination({
                   location: details.geometry.location,
@@ -42,30 +65,6 @@ const NavigateCard = () => {
         </View>
         <NavFavorites />
       </View>
-
-      <View
-        style={tw`flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100`}
-      >
-        <Pressable
-          style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}
-          onPress={() => navigation.navigate("RideOptionsCard")}
-        >
-          <Icon name="car" type="font-awesome" color="white" size={16} />
-          <Text style={tw`text-white text-center`}>Rides</Text>
-        </Pressable>
-        <Pressable
-          style={tw`flex flex-row justify-between w-24 px-4 py-3 rounded-full`}
-          onPress={() => navigation.navigate("RideOptionsCard")}
-        >
-          <Icon
-            name="fast-food-outline"
-            type="ionicon"
-            color="black"
-            size={16}
-          />
-          <Text style={tw` text-center`}>Eats</Text>
-        </Pressable>
-      </View>
     </View>
   );
 };
@@ -74,17 +73,15 @@ export default NavigateCard;
 
 const toInputBoxStyles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    paddingTop: 20,
     flex: 0,
+    border: 0,
   },
   textInput: {
-    backgroundColor: "#DDDDDF",
-    borderRadius: 0,
-    fontSize: 18,
+    fontSize: 14,
+    borderRadius: 100,
   },
   textInputContainer: {
-    paddingHorizontal: 20,
     paddingBottom: 0,
+    border: 0,
   },
 });

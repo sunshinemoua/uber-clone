@@ -47,7 +47,7 @@ const RideOptionsCard = () => {
       <View style={tw`flex flex-row items-center justify-around`}>
         <Pressable
           onPress={() => {
-            navigation.navigate("NavigateCard");
+            navigation.navigate("HomeScreen");
           }}
           style={tw`rounded-full`}
         >
