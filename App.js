@@ -17,6 +17,7 @@ import EatsScreen from "./screens/EatsScreen";
 import tw from "tailwind-react-native-classnames";
 import RidesScreen from "./screens/RidesScreen";
 import ConfirmScreen from "./screens/ConfirmScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -54,6 +55,11 @@ const App = () => {
               <Stack.Screen
                 name="ConfirmScreen"
                 component={ConfirmScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="ProfileScreen"
+                component={ProfileScreen}
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>

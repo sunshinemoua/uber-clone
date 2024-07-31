@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Button } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
@@ -71,6 +71,11 @@ const RidesScreen = () => {
         />
       )}
       <NavFavorites />
+      <Button
+        onPress={() => navigation.navigate("ProfileScreen")}
+        title="Profile"
+        color="#841584"
+      />
     </View>
   );
 };
