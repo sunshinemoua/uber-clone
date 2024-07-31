@@ -1,10 +1,9 @@
 import {
   StyleSheet,
-  Text,
-  View,
   AppRegistry,
   KeyboardAvoidingView,
   Platform,
+  StatusBar,
 } from "react-native";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -24,7 +23,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <SafeAreaProvider>
+        <SafeAreaProvider style={styles.AndroidSafeArea}>
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
@@ -68,11 +67,10 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  AndroidSafeArea: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "white",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
 
