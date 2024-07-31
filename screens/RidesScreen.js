@@ -1,48 +1,75 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Text } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { setDestination, setOrigin } from "../slices/navSlice";
 import NavFavorites from "../components/NavFavorites";
+import { useDispatch } from "react-redux";
+import SearchDrawer from "../components/SearchDrawer";
+import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Icon } from "react-native-elements";
 
 const RidesScreen = () => {
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+
+  const handleOpenBottomSheet = () => {
+    navigation.navigate("MapScreen");
+    setIsBottomSheetOpen(true);
+  };
+
+  const handlePress = (data, details = null) => {
+    console.log(data, details);
+    dispatch(
+      setOrigin({
+        location: details.geometry.location,
+        description: data.description,
+      })
+    );
+    dispatch(setDestination(null));
+    handleOpenBottomSheet();
+  };
+
   return (
     <View style={tw`p-5 mb-10`}>
-      <GooglePlacesAutocomplete
-        placeholder="Where to?"
-        styles={{
-          container: {
-            flex: 0,
-            borderRadius: "50%",
-          },
-          textInput: {
-            fontSize: 18,
+      <TouchableOpacity
+        onPress={() => {
+          handleOpenBottomSheet();
+        }}
+        style={{
+          width: "100%",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "start",
+          borderColor: "#86827e",
+          backgroundColor: "#cccccc",
+          paddingLeft: 24,
+          paddingVertical: 12,
+          borderRadius: 50,
+        }}
+      >
+        <Icon name="search-outline" type="ionicon" />
+        <Text
+          style={{
+            fontSize: 16,
             fontWeight: "bold",
-            backgroundColor: "#cccccc",
-            borderRadius: 50,
-            paddingHorizontal: 25,
-          },
-        }}
-        onPress={(data, details = null) => {
-          dispatch(
-            setOrigin({
-              location: details.geometry.location,
-              description: data.description,
-            })
-          );
-          dispatch(setDestination(null));
-        }}
-        fetchDetails={true}
-        returnKeyType={"search"}
-        enablePoweredByContainer={false}
-        minLength={2}
-        query={{ key: GOOGLE_MAPS_APIKEY, language: "en" }}
-        nearbyPlacesAPI="GooglePlacesSearch"
-        debounce={400}
-        onFail={(test) => console.log("failed", test)}
-      />
-
+            color: "#434343",
+            paddingLeft: 12,
+          }}
+        >
+          Where to?
+        </Text>
+      </TouchableOpacity>
+      {isBottomSheetOpen && (
+        <SearchDrawer
+          setIsBottomSheetOpen={setIsBottomSheetOpen}
+          isBottomSheetOpen={isBottomSheetOpen}
+        />
+      )}
       <NavFavorites />
     </View>
   );

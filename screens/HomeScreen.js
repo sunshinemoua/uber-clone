@@ -9,8 +9,6 @@ import { setDestination, setOrigin } from "../slices/navSlice";
 import NavFavorites from "../components/NavFavorites";
 
 const HomeScreen = () => {
-  const dispatch = useDispatch();
-
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <TopNavOptions />
