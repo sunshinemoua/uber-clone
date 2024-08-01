@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "flex-start",
     borderWidth: 1,
-    borderColor: "lightgray",
+    borderColor: "#e3e3e3",
     borderRadius: 8,
   },
 
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "lightgray",
+    backgroundColor: "#e3e3e3",
     paddingVertical: 5,
     paddingHorizontal: 8,
     borderRadius: 50,

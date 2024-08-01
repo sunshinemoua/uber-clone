@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   shortcuts: {
     alignSelf: "center",
-    backgroundColor: "lightgray",
+    backgroundColor: "#e3e3e3",
     paddingVertical: 15,
     paddingHorizontal: 25,
     borderRadius: 10,
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "lightgray",
+    backgroundColor: "#e3e3e3",
     paddingVertical: 15,
     paddingHorizontal: 25,
     borderRadius: 10,
