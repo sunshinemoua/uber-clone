@@ -3,19 +3,22 @@ import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
+import { IoTime } from "react-icons/io5";
 
 const data = [
   {
     id: "123",
     icon: "home",
-    location: "Home",
-    destination: "55 Music Concourse Dr, San Francisco, CA 94118",
+    name: "Home",
+    location: { lat: 38.57667, lng: -121.49361 },
+    description: "1315 10th St, Sacramento, CA 95814",
   },
   {
     id: "456",
     icon: "briefcase",
-    location: "Work",
-    destination: "1770 Gibson Rd, San Francisco",
+    name: "Work",
+    location: { lat: 38.57714, lng: -121.50682 },
+    description: "216 O St, Sacramento, CA 95814",
   },
 ];
 
@@ -26,7 +29,7 @@ const NavFavorites = () => {
         data={data}
         keyExtractor={(item) => item.id}
         ItemSeparatorComponent={() => <View style={tw`bg-gray-200 h-px`} />}
-        renderItem={({ item: { location, destination, icon } }) => (
+        renderItem={({ item: { name, description, icon } }) => (
           <Pressable
             style={({ pressed }) => [
               tw`flex-row items-center p-5 ${pressed && "opacity-50"}`,
@@ -40,8 +43,8 @@ const NavFavorites = () => {
               size={18}
             />
             <View>
-              <Text style={tw`font-semibold text-lg`}>{location}</Text>
-              <Text style={tw`text-gray-500`}>{destination}</Text>
+              <Text style={tw`font-semibold text-lg`}>{name}</Text>
+              <Text style={tw`text-gray-500`}>{description}</Text>
             </View>
           </Pressable>
         )}

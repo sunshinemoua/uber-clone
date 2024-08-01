@@ -1,10 +1,9 @@
 import {
   StyleSheet,
-  Text,
-  View,
   AppRegistry,
   KeyboardAvoidingView,
   Platform,
+  StatusBar,
 } from "react-native";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -17,13 +16,15 @@ import MapScreen from "./screens/MapScreen";
 import EatsScreen from "./screens/EatsScreen";
 import tw from "tailwind-react-native-classnames";
 import RidesScreen from "./screens/RidesScreen";
+import ConfirmScreen from "./screens/ConfirmScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 const App = () => {
   const Stack = createStackNavigator();
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <SafeAreaProvider>
+        <SafeAreaProvider style={styles.AndroidSafeArea}>
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
@@ -51,6 +52,16 @@ const App = () => {
                 component={EatsScreen}
                 options={{ headerShown: false }}
               />
+              <Stack.Screen
+                name="ConfirmScreen"
+                component={ConfirmScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="ProfileScreen"
+                component={ProfileScreen}
+                options={{ headerShown: false }}
+              />
             </Stack.Navigator>
           </KeyboardAvoidingView>
 
@@ -62,11 +73,10 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  AndroidSafeArea: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "white",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
 
