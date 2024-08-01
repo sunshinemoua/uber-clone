@@ -1,5 +1,4 @@
 import {
-  Button,
   Linking,
   ScrollView,
   StyleSheet,
@@ -8,7 +7,6 @@ import {
   View,
 } from "react-native";
 import React, { useCallback } from "react";
-import { useNavigation } from "@react-navigation/native";
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
 import uuid from "react-native-uuid";
@@ -24,8 +22,7 @@ const OpenURL = ({ url, item, dataType }) => {
     const supported = await Linking.canOpenURL(url);
 
     if (supported) {
-      // Opening the link with some app, if the URL scheme is "http" the web link should be opened
-      // by some browser in the mobile
+      // Open supported link
       await Linking.openURL(url);
     } else {
       Alert.alert(`Don't know how to open this URL: ${url}`);
@@ -76,10 +73,8 @@ const OpenURL = ({ url, item, dataType }) => {
 };
 
 const ProfileScreen = () => {
-  const navigation = useNavigation();
-
   return (
-    // Profile header
+    // Profile Header
     <ScrollView style={styles.profileWrapper}>
       <View
         style={{

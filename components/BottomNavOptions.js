@@ -1,12 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-import ConfirmScreen from "../screens/ConfirmScreen";
 import { Icon } from "react-native-elements";
 import ActivityScreen from "../screens/ActivityScreen";
 import ServicesScreen from "../screens/ServicesScreen";
 import { DefaultTheme } from "@react-navigation/native";
+import HomeMapRidesScreen from "../screens/HomeMapRidesScreen";
 
 const MyTheme = {
   ...DefaultTheme,
@@ -24,7 +23,7 @@ const BottomNavOptions = () => {
     <BottomTab.Navigator theme={MyTheme}>
       <BottomTab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeMapRidesScreen}
         options={{
           headerShown: false,
           tabBarIcon: () => {

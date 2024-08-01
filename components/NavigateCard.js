@@ -1,7 +1,5 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
-import { Icon } from "react-native-elements";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
@@ -40,6 +38,7 @@ const NavigateCard = ({ handleCloseBottomSheet }) => {
             debounce={400}
           />
           <View style={tw`border-t border-gray-300 `} />
+
           {/* DESTINATION */}
           <GooglePlacesAutocomplete
             placeholder="Where to?"

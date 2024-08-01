@@ -1,6 +1,5 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, View, FlatList } from "react-native";
 import React from "react";
-import { FlatList } from "react-native-gesture-handler";
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
 

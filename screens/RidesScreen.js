@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Button, Pressable } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import NavFavorites from "../components/NavFavorites";
 import SearchDrawer from "../components/SearchDrawer";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 import { Icon } from "react-native-elements";
 
 const shortcutsData = [
@@ -108,7 +113,7 @@ const RidesScreen = () => {
           }}
         >
           <Text style={{ fontWeight: "bold", fontSize: 18 }}>Suggestions</Text>
-          <Pressable onPress={() => navigation.navigate("ServicesScreen")}>
+          <Pressable onPress={() => navigation.navigate("Services")}>
             <Text style={{ fontSize: 14 }}> See All</Text>
           </Pressable>
         </View>

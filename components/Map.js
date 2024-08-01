@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import MapView, { Marker } from "react-native-maps";
 import React, { useEffect, useRef } from "react";
@@ -21,6 +21,8 @@ const Map = () => {
       edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
     });
   }, [origin, destination]);
+
+  // Google Maps API to calculate travel time
 
   useEffect(() => {
     if (!origin || !destination) return;
@@ -51,6 +53,7 @@ const Map = () => {
         longitudeDelta: 0.005,
       }}
     >
+      {/* Shows route from origin to destination */}
       {origin && destination && (
         <MapViewDirections
           origin={origin.description}
@@ -61,6 +64,7 @@ const Map = () => {
         />
       )}
 
+      {/* Add pins to locations */}
       {origin?.location && (
         <Marker
           coordinate={{

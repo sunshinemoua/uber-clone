@@ -1,6 +1,5 @@
-import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
 import { Icon, Image } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
@@ -36,6 +35,7 @@ const RideOptionsCard = () => {
   const [selected, setSelected] = useState(null);
   const { travelTimeInformation } = useSelector((state) => state.nav);
 
+  // Convert Google distance from km to miles
   const convertToMiles = (val) => {
     const km = parseFloat(val);
     const miles = km * 0.621371;
@@ -78,6 +78,8 @@ const RideOptionsCard = () => {
               <Text style={tw`text-xl font-semibold`}>{title}</Text>
               <Text>{travelTimeInformation?.duration?.text}</Text>
             </View>
+
+            {/* Calculate cost */}
             <Text style={tw`text-xl`}>
               {new Intl.NumberFormat("en-usd", {
                 style: "currency",
