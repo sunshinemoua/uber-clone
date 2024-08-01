@@ -42,8 +42,8 @@ const NavFavorites = () => {
               size={18}
             />
             <View>
-              <Text style={tw`font-semibold text-lg`}>{name}</Text>
-              <Text style={tw`text-gray-500`}>{description}</Text>
+              <Text style={tw`font-semibold text-base`}>{name}</Text>
+              <Text style={tw`text-gray-500 text-xs`}>{description}</Text>
             </View>
           </Pressable>
         )}

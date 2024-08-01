@@ -6,19 +6,29 @@ import ConfirmScreen from "../screens/ConfirmScreen";
 import { Icon } from "react-native-elements";
 import ActivityScreen from "../screens/ActivityScreen";
 import ServicesScreen from "../screens/ServicesScreen";
+import { DefaultTheme } from "@react-navigation/native";
+
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "rgb(255, 45, 85)",
+    background: "red",
+  },
+};
 
 const BottomNavOptions = () => {
   const BottomTab = createBottomTabNavigator();
 
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator theme={MyTheme}>
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}
         options={{
           headerShown: false,
           tabBarIcon: () => {
-            return <Icon name="person-sharp" type="ionicon" />;
+            return <Icon name="home" type="ionicon" />;
           },
         }}
       />
@@ -26,6 +36,7 @@ const BottomNavOptions = () => {
         name="Services"
         component={ServicesScreen}
         options={{
+          headerShown: false,
           tabBarIcon: () => {
             return <Icon name="grid" type="ionicon" />;
           },
@@ -33,8 +44,10 @@ const BottomNavOptions = () => {
       />
       <BottomTab.Screen
         name="Activity"
+        tabBarActiveBackgroundColor="white"
         component={ActivityScreen}
         options={{
+          headerShown: false,
           tabBarIcon: () => {
             return <Icon name="receipt" type="ionicon" />;
           },
