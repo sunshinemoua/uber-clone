@@ -19,6 +19,7 @@ import RidesScreen from "./screens/RidesScreen";
 import ConfirmScreen from "./screens/ConfirmScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import BottomNavOptions from "./components/BottomNavOptions";
+import ServicesScreen from "./screens/ServicesScreen";
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -35,7 +36,7 @@ const App = () => {
               <Stack.Screen
                 name="HomeScreen"
                 component={BottomNavOptions}
-                options={{ headerShown: false }}
+                options={{ headerShown: false, cardStyle: { backgroundColor: 'red' } }}
               />
               <Stack.Screen
                 name="RidesScreen"
@@ -60,6 +61,11 @@ const App = () => {
               <Stack.Screen
                 name="ProfileScreen"
                 component={ProfileScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="ServicesScreen"
+                component={ServicesScreen}
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>

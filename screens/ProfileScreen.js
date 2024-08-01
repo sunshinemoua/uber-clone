@@ -81,11 +81,6 @@ const ProfileScreen = () => {
   return (
     // Profile header
     <ScrollView style={styles.profileWrapper}>
-      <Button
-        onPress={() => navigation.navigate("HomeScreen")}
-        title="Home"
-        color="#841584"
-      />
       <View
         style={{
           flexDirection: "row",
@@ -150,7 +145,7 @@ export default ProfileScreen;
 
 const styles = StyleSheet.create({
   profileWrapper: {
-    marginBottom: 48,
+    marginTop: 48,
   },
   shortcutsWrapper: {
     display: "flex",
