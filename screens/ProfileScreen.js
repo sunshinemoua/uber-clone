@@ -8,10 +8,10 @@ import {
   View,
 } from "react-native";
 import React, { useCallback } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
+import uuid from "react-native-uuid";
 import {
   moreLinksData,
   quicklinksData,
@@ -52,7 +52,7 @@ const OpenURL = ({ url, item, dataType }) => {
               name={item.icon}
               type="ionicon"
               color={item.color}
-              size="32"
+              size={32}
             />
           </View>
         </TouchableOpacity>
@@ -61,7 +61,7 @@ const OpenURL = ({ url, item, dataType }) => {
       {dataType === "morelinks" && (
         <TouchableOpacity onPress={handlePress}>
           <View style={styles.moreLinks}>
-            <Icon name={item.icon} type="ionicon" color="#333333" size="18" />
+            <Icon name={item.icon} type="ionicon" color="#333333" size={18} />
             <View style={{ width: "90%" }}>
               <Text style={styles.qlHeader}>{item.title}</Text>
               {item.subtitle && (
@@ -95,7 +95,7 @@ const ProfileScreen = () => {
         }}
       >
         <Text style={{ fontSize: 24, fontWeight: "600" }}>Sunshine M.</Text>
-        <Icon name="person-circle-outline" type="ionicon" size="64" />
+        <Icon name="person-circle-outline" type="ionicon" size={64} />
       </View>
 
       {/* Shortcuts */}
@@ -104,6 +104,7 @@ const ProfileScreen = () => {
           return (
             <OpenURL
               style={styles.shortcuts}
+              key={uuid.v4()}
               item={item}
               url={item.url}
               dataType="shortcuts"
@@ -118,6 +119,7 @@ const ProfileScreen = () => {
           return (
             <OpenURL
               style={styles.shortcuts}
+              key={uuid.v4()}
               item={item}
               url={item.url}
               dataType="quicklinks"
@@ -133,6 +135,7 @@ const ProfileScreen = () => {
         return (
           <OpenURL
             style={styles.shortcuts}
+            key={uuid.v4()}
             item={item}
             url={item.url}
             dataType="morelinks"

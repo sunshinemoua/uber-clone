@@ -1,9 +1,8 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
-import { IoTime } from "react-icons/io5";
 
 const data = [
   {
@@ -54,5 +53,3 @@ const NavFavorites = () => {
 };
 
 export default NavFavorites;
-
-const styles = StyleSheet.create({});
