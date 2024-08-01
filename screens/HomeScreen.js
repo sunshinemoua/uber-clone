@@ -1,25 +1,28 @@
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import tw from "tailwind-react-native-classnames";
-import TopNavOptions from "../components/TopNavOptions";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { GOOGLE_MAPS_APIKEY } from "@env";
-import { useDispatch } from "react-redux";
-import { setDestination, setOrigin } from "../slices/navSlice";
-import NavFavorites from "../components/NavFavorites";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import RidesScreen from "./RidesScreen";
+import EatsScreen from "./EatsScreen";
 
 const HomeScreen = () => {
+  const TopTab = createMaterialTopTabNavigator();
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
-      <TopNavOptions />
+      <TopTab.Navigator>
+        <TopTab.Screen
+          name="RidesScreen"
+          component={RidesScreen}
+          options={{ tabBarLabel: "Rides" }}
+        />
+        <TopTab.Screen
+          name="EatsScreen"
+          component={EatsScreen}
+          options={{ tabBarLabel: "Eats" }}
+        />
+      </TopTab.Navigator>
     </SafeAreaView>
   );
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-  text: {
-    color: "blue",
-  },
-});

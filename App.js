@@ -18,6 +18,7 @@ import tw from "tailwind-react-native-classnames";
 import RidesScreen from "./screens/RidesScreen";
 import ConfirmScreen from "./screens/ConfirmScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import BottomNavOptions from "./components/BottomNavOptions";
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -33,8 +34,7 @@ const App = () => {
             <Stack.Navigator>
               <Stack.Screen
                 name="HomeScreen"
-                component={HomeScreen}
-                v
+                component={BottomNavOptions}
                 options={{ headerShown: false }}
               />
               <Stack.Screen
@@ -64,8 +64,6 @@ const App = () => {
               />
             </Stack.Navigator>
           </KeyboardAvoidingView>
-
-          {/* <HomeScreen /> */}
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
