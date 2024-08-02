@@ -6,6 +6,7 @@ import {
   Pressable,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import NavFavorites from "../components/NavFavorites";
@@ -13,12 +14,14 @@ import SearchDrawer from "../components/SearchDrawer";
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "react-native-elements";
 import Img from "../assets/test.jpg";
+import OpenURL from "../components/OpenURL";
+import uuid from "react-native-uuid";
 
 const suggestionsData = [
   {
     title: "Ride",
     icon: "car",
-    url: "https://help.uber.com",
+    url: "https://www.uber.com/global/en/sign-in/",
     color: "darkorange",
   },
   {
@@ -45,13 +48,13 @@ const saveEverydayData = [
   {
     title: "Add a stop or 5",
     subtitle: "Pick up something along the way",
-    url: "",
+    url: "https://www.uber.com/global/en/sign-in/",
     isXL: true,
   },
   {
     title: "Go on 2 wheels",
     subtitle: "Take an electronic bike or scooter",
-    url: "",
+    url: "https://www.uber.com/us/en/ride/uber-moto/",
     isXL: true,
   },
 ];
@@ -69,19 +72,19 @@ export const Tile = ({ item }) => (
     }
   >
     {item.icon ? (
-      <>
+      <OpenURL key={uuid.v4()} url={item.url}>
         <Icon name={item.icon} type="ionicon" color={item.color} />
         <Text style={tw`pt-2 text-xs`}> {item.title}</Text>
-      </>
+      </OpenURL>
     ) : (
-      <>
-        <Image style={styles.tinyLogo} source={require("../assets/test.jpg")} />
+      <OpenURL key={uuid.v4()} url={item.url}>
+        <Image style={styles.img} source={require("../assets/test.jpg")} />
         <View style={tw`flex-row items-center justify-start`}>
           <Text style={tw`pr-1 text-sm font-semibold`}> {item.title}</Text>
           <Icon name="arrow-forward-outline" type="ionicon" size={16} />
         </View>
         <Text style={tw`text-xs text-gray-500`}> {item.subtitle}</Text>
-      </>
+      </OpenURL>
     )}
   </TouchableOpacity>
 );
@@ -97,7 +100,7 @@ const RidesScreen = () => {
   };
 
   return (
-    <View style={tw`p-5`}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <TouchableOpacity
         onPress={() => {
           handleOpenBottomSheet();
@@ -135,20 +138,18 @@ const RidesScreen = () => {
       <NavFavorites />
 
       {/* Suggestions */}
-      <View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginTop: 10,
-          }}
-        >
-          <Text style={{ fontWeight: "bold", fontSize: 18 }}>Suggestions</Text>
-          <Pressable onPress={() => navigation.navigate("Services")}>
-            <Text style={{ fontSize: 14 }}> See All</Text>
-          </Pressable>
-        </View>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginTop: 10,
+        }}
+      >
+        <Text style={tw`font-bold text-lg`}>Suggestions</Text>
+        <Pressable onPress={() => navigation.navigate("Services")}>
+          <Text style={{ fontSize: 14 }}> See All</Text>
+        </Pressable>
       </View>
 
       <View style={styles.shortcutsWrapper}>
@@ -158,18 +159,42 @@ const RidesScreen = () => {
       </View>
 
       {/* Save everyday */}
-      <View style={styles.shortcutsWrapper}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginTop: 18,
+        }}
+      >
+        <Text style={tw`font-bold text-lg mb-2`}>Save everyday</Text>
+      </View>
+
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.horizontalScrollView}
+      >
         {saveEverydayData.map((item) => (
           <Tile key={item.title} item={item} />
         ))}
-      </View>
-    </View>
+      </ScrollView>
+    </ScrollView>
   );
 };
 
 export default RidesScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+
+  horizontalScrollView: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
   shortcutsWrapper: {
     display: "flex",
     flexDirection: "row",
@@ -186,7 +211,7 @@ const styles = StyleSheet.create({
     height: 64,
     borderRadius: 10,
   },
-  tinyLogo: {
+  img: {
     height: 115,
     width: "100%",
     borderRadius: 8,
@@ -198,6 +223,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 215,
     height: 175,
+    marginRight: 12,
   },
   bigShortcuts: {
     display: "flex",
