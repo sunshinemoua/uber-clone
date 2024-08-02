@@ -5,14 +5,16 @@ import {
   Text,
   Pressable,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import NavFavorites from "../components/NavFavorites";
 import SearchDrawer from "../components/SearchDrawer";
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "react-native-elements";
+import Img from "../assets/test.jpg";
 
-const shortcutsData = [
+const suggestionsData = [
   {
     title: "Ride",
     icon: "car",
@@ -39,18 +41,48 @@ const shortcutsData = [
   },
 ];
 
+const saveEverydayData = [
+  {
+    title: "Add a stop or 5",
+    subtitle: "Pick up something along the way",
+    url: "",
+    isXL: true,
+  },
+  {
+    title: "Go on 2 wheels",
+    subtitle: "Take an electronic bike or scooter",
+    url: "",
+    isXL: true,
+  },
+];
+
 export const Tile = ({ item }) => (
   <TouchableOpacity
     style={
-      !!item?.isBig
+      !!item?.isXL
+        ? styles.XLShortcuts
+        : !!item?.isBig
         ? styles.bigShortcuts
         : !!item?.isMedium
         ? styles.mediumShortcuts
         : styles.shortcuts
     }
   >
-    <Icon name={item.icon} type="ionicon" color={item.color} />
-    <Text style={tw`pt-2 text-xs`}> {item.title}</Text>
+    {item.icon ? (
+      <>
+        <Icon name={item.icon} type="ionicon" color={item.color} />
+        <Text style={tw`pt-2 text-xs`}> {item.title}</Text>
+      </>
+    ) : (
+      <>
+        <Image style={styles.tinyLogo} source={require("../assets/test.jpg")} />
+        <View style={tw`flex-row items-center justify-start`}>
+          <Text style={tw`pr-1 text-sm font-semibold`}> {item.title}</Text>
+          <Icon name="arrow-forward-outline" type="ionicon" size={16} />
+        </View>
+        <Text style={tw`text-xs text-gray-500`}> {item.subtitle}</Text>
+      </>
+    )}
   </TouchableOpacity>
 );
 
@@ -120,7 +152,14 @@ const RidesScreen = () => {
       </View>
 
       <View style={styles.shortcutsWrapper}>
-        {shortcutsData.map((item) => (
+        {suggestionsData.map((item) => (
+          <Tile key={item.title} item={item} />
+        ))}
+      </View>
+
+      {/* Save everyday */}
+      <View style={styles.shortcutsWrapper}>
+        {saveEverydayData.map((item) => (
           <Tile key={item.title} item={item} />
         ))}
       </View>
@@ -147,13 +186,24 @@ const styles = StyleSheet.create({
     height: 64,
     borderRadius: 10,
   },
+  tinyLogo: {
+    height: 115,
+    width: "100%",
+    borderRadius: 8,
+    marginBottom: 5,
+  },
+  XLShortcuts: {
+    display: "flex",
+    backgroundColor: "transparent",
+    borderRadius: 10,
+    width: 215,
+    height: 175,
+  },
   bigShortcuts: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#e3e3e3",
-    width: 78,
-    height: 64,
     borderRadius: 10,
     width: 175,
     height: 100,
@@ -163,8 +213,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#e3e3e3",
-    width: 78,
-    height: 64,
     borderRadius: 10,
     width: 100,
     height: 100,
