@@ -1,9 +1,8 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, FlatList } from "react-native";
 import React, { useState } from "react";
 import tw from "tailwind-react-native-classnames";
 import { Icon, Image } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import { FlatList } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";
 
 const data = [

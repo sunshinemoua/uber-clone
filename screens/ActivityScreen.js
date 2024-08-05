@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import React from "react";
 import { Icon } from "react-native-elements";
-import Img from "../assets/test.jpg";
 
 const randomAddresses = [
   {
@@ -74,8 +73,6 @@ const randomAddresses = [
 ];
 
 const ActivityScreen = () => {
-  console.log(Img);
-
   return (
     <>
       <Text style={styles.title}>Activity</Text>
