@@ -22,7 +22,9 @@ export const Tile = ({ item }) => {
     >
       {item.icon ? (
         <OpenURL key={uuid.v4()} url={item.url}>
-          <Icon name={item.icon} type="ionicon" color={item.color} />
+          {/* <Icon name={item.icon} type="ionicon" color={item.color} /> */}
+          <Image style={styles.smallImg} source={item.imgURL} />
+
           <Text style={tw`pt-2 text-xs`}> {item.title}</Text>
         </OpenURL>
       ) : (
@@ -89,6 +91,10 @@ const styles = StyleSheet.create({
     width: 78,
     height: 64,
     borderRadius: 10,
+  },
+  smallImg: {
+    height: 40,
+    width: 40,
   },
   img: {
     height: 115,

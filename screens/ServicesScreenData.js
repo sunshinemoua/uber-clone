@@ -7,6 +7,7 @@ export const goAnywhereList = [
     icon: "car",
     url: "https://help.uber.com",
     color: "darkorange",
+    imgURL: require("../pics/ride1.png"),
     isBig: true,
   },
   {
@@ -15,6 +16,8 @@ export const goAnywhereList = [
     icon: "calendar-outline",
     url: "https://www.uber.com/us/en/ride/how-it-works/reserve/",
     color: "red",
+    imgURL: require("../pics/reserve2.png"),
+
     isBig: true,
   },
   {
@@ -23,6 +26,7 @@ export const goAnywhereList = [
     icon: "key",
     url: "https://www.uber.com/us/en/r/cities/car-rentals/sacramento-ca-us/",
     color: "blue",
+    imgURL: require("../pics/rentKeys3.png"),
     isMedium: true,
   },
   {
@@ -31,6 +35,7 @@ export const goAnywhereList = [
     icon: "bicycle",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     color: "green",
+    imgURL: require("../pics/bike.png"),
     isMedium: true,
   },
   {
@@ -39,6 +44,7 @@ export const goAnywhereList = [
     icon: "people",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     color: "black",
+    imgURL: require("../pics/group.png"),
     isMedium: true,
   },
 ];
@@ -49,6 +55,7 @@ export const getAnythingDeliveredList = [
     title: "Food",
     icon: "restaurant",
     url: "https://help.uber.com",
+    imgURL: require("../pics/food.png"),
     color: "darkorange",
   },
   {
@@ -56,6 +63,7 @@ export const getAnythingDeliveredList = [
     title: "Grocery",
     icon: "fast-food-outline",
     url: "https://www.uber.com/us/en/ride/how-it-works/reserve/",
+    imgURL: require("../pics/grocery.png"),
     color: "darkgreen",
   },
   {
@@ -64,6 +72,7 @@ export const getAnythingDeliveredList = [
     icon: "beer",
     url: "https://www.uber.com/us/en/r/cities/car-rentals/sacramento-ca-us/",
     color: "#b5651d",
+    imgURL: require("../pics/alcohol.png"),
   },
   {
     id: uuid.v4(),
@@ -71,6 +80,7 @@ export const getAnythingDeliveredList = [
     icon: "storefront",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     color: "black",
+    imgURL: require("../pics/convenience.png"),
   },
   {
     id: uuid.v4(),
@@ -78,6 +88,7 @@ export const getAnythingDeliveredList = [
     icon: "medkit",
     url: "https://help.uber.com",
     color: "red",
+    imgURL: require("../pics/health.png"),
   },
   {
     id: uuid.v4(),
@@ -85,6 +96,7 @@ export const getAnythingDeliveredList = [
     icon: "fitness",
     url: "https://www.uber.com/us/en/ride/how-it-works/reserve/",
     color: "#7f7fff",
+    imgURL: require("../pics/personal.png"),
   },
   {
     id: uuid.v4(),
@@ -92,6 +104,7 @@ export const getAnythingDeliveredList = [
     icon: "sunny",
     url: "https://www.uber.com/us/en/r/cities/car-rentals/sacramento-ca-us/",
     color: "#ffc04c",
+    imgURL: require("../pics/baby.png"),
   },
   {
     id: uuid.v4(),
@@ -99,6 +112,7 @@ export const getAnythingDeliveredList = [
     icon: "wine",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     color: "darkred",
+    imgURL: require("../pics/gourmet.png"),
   },
   {
     id: uuid.v4(),
@@ -106,6 +120,7 @@ export const getAnythingDeliveredList = [
     icon: "paw",
     url: "https://help.uber.com",
     color: "brown",
+    imgURL: require("../pics/petsupplies.png"),
   },
   {
     id: uuid.v4(),
@@ -113,6 +128,7 @@ export const getAnythingDeliveredList = [
     icon: "flower",
     url: "https://www.uber.com/us/en/ride/how-it-works/reserve/",
     color: "#cc99a2",
+    imgURL: require("../pics/flowers.png"),
   },
   {
     id: uuid.v4(),
@@ -120,6 +136,7 @@ export const getAnythingDeliveredList = [
     icon: "gift",
     url: "https://www.uber.com/us/en/r/cities/car-rentals/sacramento-ca-us/",
     color: "blue",
+    imgURL: require("../pics/retail.png"),
   },
   {
     id: uuid.v4(),
@@ -127,6 +144,7 @@ export const getAnythingDeliveredList = [
     icon: "watch",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     color: "darkgray",
+    imgURL: require("../pics/electronics.png"),
   },
 ];
 
@@ -137,6 +155,7 @@ export const getAnythingDoneList = [
     icon: "logo-dropbox",
     url: "https://help.uber.com",
     color: "#521515",
+    imgURL: require("../pics/package.png"),
     isBig: true,
   },
   {
@@ -145,6 +164,7 @@ export const getAnythingDoneList = [
     icon: "storefront",
     url: "https://www.uber.com/us/en/ride/how-it-works/reserve/",
     color: "#a52a2a",
+    imgURL: require("../pics/pickup.png"),
     isBig: true,
   },
 ];
