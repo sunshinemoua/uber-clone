@@ -135,6 +135,75 @@ const SecondSaveEverydayData = [
   },
 ];
 
+const PlanTripData = [
+  {
+    id: uuid.v4(),
+    title: "Easy car rentals",
+    subtitle: "Take the wheel and get going",
+    url: "https://www.uber.com/global/en/sign-in/",
+    isXL: true,
+  },
+  {
+    id: uuid.v4(),
+    title: "For XL groups",
+    subtitle: "Room for the whole crew and bags",
+    url: "https://www.uber.com/us/en/ride/uber-moto/",
+    isXL: true,
+  },
+  {
+    id: uuid.v4(),
+    title: "Reserve and relax",
+    subtitle: "Book up to 90 days ahead",
+    url: "https://www.uber.com/global/en/sign-in/",
+    isXL: true,
+  },
+];
+
+const TravelEasyData = [
+  {
+    id: uuid.v4(),
+    title: "Reserve a drop off",
+    subtitle: "Get to the airport stress-free",
+    url: "https://www.uber.com/global/en/sign-in/",
+    isXL: true,
+  },
+  {
+    id: uuid.v4(),
+    title: "For XL groups",
+    subtitle: "Fit your crew & luggage, easily",
+    url: "https://www.uber.com/us/en/ride/uber-moto/",
+    isXL: true,
+  },
+  {
+    id: uuid.v4(),
+    title: "Book a rental car",
+    subtitle: "Check out a new city with ease",
+    url: "https://www.uber.com/global/en/sign-in/",
+    isXL: true,
+  },
+  {
+    id: uuid.v4(),
+    title: "Travel in luxury",
+    subtitle: "Elevated services, high-end cars",
+    url: "https://www.uber.com/global/en/sign-in/",
+    isXL: true,
+  },
+  {
+    id: uuid.v4(),
+    title: "Try local spots",
+    subtitle: "Delivered on Uber Eats",
+    url: "https://www.uber.com/us/en/ride/uber-moto/",
+    isXL: true,
+  },
+  {
+    id: uuid.v4(),
+    title: "Try 2 wheels",
+    subtitle: "Discover new places affordably",
+    url: "https://www.uber.com/global/en/sign-in/",
+    isXL: true,
+  },
+];
+
 export const Tile = ({ item }) => {
   return (
     <TouchableOpacity
@@ -186,13 +255,10 @@ export const Tile = ({ item }) => {
                 source={require("../assets/test.jpg")}
               />
               <View style={tw`flex-row items-center justify-start`}>
-                <Text style={tw`pr-1 text-sm font-semibold`}>
-                  {" "}
-                  {item.title}
-                </Text>
+                <Text style={tw`pr-1 text-sm font-semibold`}>{item.title}</Text>
                 <Icon name="arrow-forward-outline" type="ionicon" size={16} />
               </View>
-              <Text style={tw`text-xs text-gray-500`}> {item.subtitle}</Text>
+              <Text style={tw`text-xs text-gray-500`}>{item.subtitle}</Text>
             </>
           )}
         </OpenURL>
@@ -211,12 +277,12 @@ const RidesScreen = () => {
   };
 
   const renderHorizontalItem = ({ item }) => (
-    <Tile key={uuid.v4()} item={item} />
+    <Tile style={{ flex: 1 }} key={uuid.v4()} item={item} />
   );
 
   const renderVerticalItem = ({ item }) => (
-    <View style={styles.horizontalContainer}>
-      {item.title === "Save everyday" && (
+    <View>
+      {item.title && (
         <View
           style={{
             flexDirection: "row",
@@ -225,7 +291,7 @@ const RidesScreen = () => {
             marginTop: 18,
           }}
         >
-          <Text style={tw`font-bold text-lg mb-2`}>Save everyday</Text>
+          <Text style={tw`font-bold text-lg mb-2`}>{item.title}</Text>
         </View>
       )}
       <FlatList
@@ -246,6 +312,16 @@ const RidesScreen = () => {
       data: FirstSaveEverydayData,
     },
     { name: "Second Save Everyday", title: "", data: SecondSaveEverydayData },
+    {
+      name: "Plan Your Next Trip",
+      title: "Plan Your Next Trip",
+      data: PlanTripData,
+    },
+    {
+      name: "Travel made easy",
+      title: "Travel made easy",
+      data: TravelEasyData,
+    },
   ];
 
   return (
@@ -263,6 +339,7 @@ const RidesScreen = () => {
               backgroundColor: "#cccccc",
               paddingLeft: 24,
               paddingVertical: 12,
+              marginTop: 12,
               borderRadius: 50,
             }}
           >
@@ -290,6 +367,7 @@ const RidesScreen = () => {
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
+              paddingRight: 20,
             }}
           >
             <Text style={tw`font-bold text-lg`}>Suggestions</Text>
@@ -307,122 +385,14 @@ const RidesScreen = () => {
       data={verticalData}
       renderItem={renderVerticalItem}
       keyExtractor={(item) => item.title}
-      contentContainerStyle={styles.container}
+      contentContainerStyle={tw`pl-5`}
     />
   );
 };
 
 export default RidesScreen;
 
-// const RidesScreen = () => {
-//   const navigation = useNavigation();
-
-//   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
-
-//   const handleOpenBottomSheet = () => {
-//     navigation.navigate("MapScreen");
-//     setIsBottomSheetOpen(true);
-//   };
-
-//   const renderHorizontalItems = (data) => (
-//     <ScrollView
-//       horizontal
-//       showsHorizontalScrollIndicator={false}
-//       contentContainerStyle={styles.horizontalList}
-//     >
-//       {data.map((item) => (
-//         <Tile key={item.title} item={item} />
-//       ))}
-//     </ScrollView>
-//   );
-
-//   return (
-//     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-//       <TouchableOpacity
-//         onPress={() => {
-//           handleOpenBottomSheet();
-//         }}
-//         style={{
-//           width: "100%",
-//           flexDirection: "row",
-//           alignItems: "center",
-//           justifyContent: "start",
-//           borderColor: "#86827e",
-//           backgroundColor: "#cccccc",
-//           paddingLeft: 24,
-//           paddingVertical: 12,
-//           borderRadius: 50,
-//         }}
-//       >
-//         <Icon name="search-outline" type="ionicon" />
-//         <Text
-//           style={{
-//             fontSize: 16,
-//             fontWeight: "bold",
-//             color: "#434343",
-//             paddingLeft: 12,
-//           }}
-//         >
-//           Where to?
-//         </Text>
-//       </TouchableOpacity>
-//       {isBottomSheetOpen && (
-//         <SearchDrawer
-//           setIsBottomSheetOpen={setIsBottomSheetOpen}
-//           isBottomSheetOpen={isBottomSheetOpen}
-//         />
-//       )}
-//       <NavFavorites />
-
-//       {/* Suggestions */}
-//       <View
-//         style={{
-//           flexDirection: "row",
-//           alignItems: "center",
-//           justifyContent: "space-between",
-//           marginTop: 10,
-//         }}
-//       >
-//         <Text style={tw`font-bold text-lg`}>Suggestions</Text>
-//         <Pressable onPress={() => navigation.navigate("Services")}>
-//           <Text style={{ fontSize: 14 }}> See All</Text>
-//         </Pressable>
-//       </View>
-
-//       <View style={styles.shortcutsWrapper}>
-//         {suggestionsData.map((item) => (
-//           <Tile key={item.title} item={item} />
-//         ))}
-//       </View>
-
-//       {/* First Save everyday */}
-//       <View
-//         style={{
-//           flexDirection: "row",
-//           alignItems: "center",
-//           justifyContent: "space-between",
-//           marginTop: 18,
-//         }}
-//       >
-//         <Text style={tw`font-bold text-lg mb-2`}>Save everyday</Text>
-//       </View>
-
-//       <View>{renderHorizontalItems(FirstSaveEverydayData)}</View>
-
-//       {/* Second Save everyday */}
-//       <View>{renderHorizontalItems(SecondSaveEverydayData)}</View>
-//     </ScrollView>
-//   );
-// };
-
-// export default RidesScreen;
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-
   horizontalScrollView: {
     flexDirection: "row",
     alignItems: "center",
@@ -432,6 +402,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    paddingRight: 16,
     marginTop: 16,
   },
   shortcuts: {
