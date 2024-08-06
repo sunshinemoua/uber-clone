@@ -3,32 +3,35 @@ import uuid from "react-native-uuid";
 export const suggestionsData = [
   {
     id: uuid.v4(),
-    id: uuid.v4(),
     title: "Ride",
-    icon: "car",
-    url: "https://www.uber.com/global/en/sign-in/",
+    url: "https://help.uber.com",
     color: "darkorange",
+    imgURL: require("../pics/ride1.png"),
+    isSmall: true,
   },
   {
     id: uuid.v4(),
     title: "Reserve",
-    icon: "calendar-outline",
     url: "https://www.uber.com/us/en/ride/how-it-works/reserve/",
     color: "red",
+    imgURL: require("../pics/reserve2.png"),
+    isSmall: true,
   },
   {
     id: uuid.v4(),
     title: "Rental Cars",
-    icon: "key",
     url: "https://www.uber.com/us/en/r/cities/car-rentals/sacramento-ca-us/",
     color: "blue",
+    imgURL: require("../pics/rentKeys3.png"),
+    isSmall: true,
   },
   {
     id: uuid.v4(),
     title: "2-Wheels",
-    icon: "bicycle",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     color: "green",
+    imgURL: require("../pics/bike.png"),
+    isSmall: true,
   },
 ];
 

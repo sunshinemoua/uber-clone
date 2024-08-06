@@ -20,52 +20,57 @@ export const Tile = ({ item }) => {
           : styles.shortcuts
       }
     >
-      {item.icon ? (
-        <OpenURL key={uuid.v4()} url={item.url}>
-          {/* <Icon name={item.icon} type="ionicon" color={item.color} /> */}
-          <Image style={styles.smallImg} source={item.imgURL} />
-
-          <Text style={tw`pt-2 text-xs`}> {item.title}</Text>
-        </OpenURL>
-      ) : (
-        <OpenURL key={uuid.v4()} url={item.url}>
-          {item.is2XL ? (
-            <View
-              style={tw`flex-row w-full justify-between bg-purple-700 rounded-lg`}
-            >
-              <View style={tw`w-3/5`}>
-                <Text style={tw`p-3 text-base font-bold text-white`}>
-                  {item.title}
+      <OpenURL key={uuid.v4()} url={item.url}>
+        {item.is2XL ? (
+          <View
+            style={tw`flex-row w-full justify-between bg-purple-700 rounded-lg`}
+          >
+            <View style={tw`w-3/5`}>
+              <Text style={tw`p-3 text-base font-bold text-white`}>
+                {item.title}
+              </Text>
+              <View style={tw`flex-row`}>
+                <Text style={tw`text-xs text-white font-semibold pl-3`}>
+                  {item.subtitle}
                 </Text>
-                <View style={tw`flex-row`}>
-                  <Text style={tw`text-xs text-white font-semibold pl-3`}>
-                    {item.subtitle}
-                  </Text>
-                  <Icon
-                    name="arrow-forward-outline"
-                    type="ionicon"
-                    size={16}
-                    color="white"
-                  />
-                </View>
+                <Icon
+                  name="arrow-forward-outline"
+                  type="ionicon"
+                  size={16}
+                  color="white"
+                />
               </View>
-              <Image style={styles.is2XLImg} source={item.imgURL} />
             </View>
-          ) : (
-            <>
-              <Image
-                style={styles.img}
-                source={require("../assets/test.jpg")}
-              />
-              <View style={tw`flex-row items-center justify-start`}>
-                <Text style={tw`pr-1 text-sm font-semibold`}>{item.title}</Text>
-                <Icon name="arrow-forward-outline" type="ionicon" size={16} />
-              </View>
-              <Text style={tw`text-xs text-gray-500`}>{item.subtitle}</Text>
-            </>
-          )}
-        </OpenURL>
-      )}
+            <Image style={styles.is2XLImg} source={item.imgURL} />
+          </View>
+        ) : item.isXL ? (
+          <>
+            <Image style={styles.img} source={require("../assets/test.jpg")} />
+            <View style={tw`flex-row items-center justify-start`}>
+              <Text style={tw`pr-1 text-sm font-semibold`}>{item.title}</Text>
+              <Icon name="arrow-forward-outline" type="ionicon" size={16} />
+            </View>
+            <Text style={tw`text-xs text-gray-500`}>{item.subtitle}</Text>
+          </>
+        ) : (
+          <OpenURL key={uuid.v4()} url={item.url}>
+            <Image
+              style={
+                item.isSmall
+                  ? styles.smallImg
+                  : item.isMedium
+                  ? styles.medImg
+                  : item.isBig
+                  ? styles.bigImg
+                  : styles.img
+              }
+              source={item.imgURL}
+            />
+
+            <Text style={tw`pt-2 text-xs`}> {item.title}</Text>
+          </OpenURL>
+        )}
+      </OpenURL>
     </TouchableOpacity>
   );
 };
@@ -88,13 +93,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#e3e3e3",
-    width: 78,
-    height: 64,
+    width: 76,
+    height: 96,
     borderRadius: 10,
   },
   smallImg: {
-    height: 40,
-    width: 40,
+    height: 45,
+    width: 45,
+  },
+  medImg: {
+    height: 50,
+    width: 50,
+  },
+  bigImg: {
+    height: 60,
+    width: 60,
   },
   img: {
     height: 115,
