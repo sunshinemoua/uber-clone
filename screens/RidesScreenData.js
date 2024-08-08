@@ -41,6 +41,7 @@ export const FirstSaveEverydayData = [
     title: "Add a stop or 5",
     subtitle: "Pick up something along the way",
     url: "https://www.uber.com/global/en/sign-in/",
+    imgURL: require("../pics/map.jpg"),
     isXL: true,
   },
   {
@@ -48,6 +49,8 @@ export const FirstSaveEverydayData = [
     title: "Go on 2 wheels",
     subtitle: "Take an electronic bike or scooter",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
+    imgURL: require("../pics/scooter.jpg"),
+
     isXL: true,
   },
 ];
@@ -59,7 +62,7 @@ export const SecondSaveEverydayData = [
     subtitle: "Learn more",
     url: "https://www.uber.com/global/en/sign-in/",
     is2XL: true,
-    imgURL: require("../assets/test.jpg"),
+    imgURL: require("../pics/rentKeys1.jpg"),
   },
   {
     id: uuid.v4(),
@@ -67,7 +70,7 @@ export const SecondSaveEverydayData = [
     subtitle: "Try Black SUV",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     is2XL: true,
-    imgURL: require("../assets/test.jpg"),
+    imgURL: require("../pics/friendGroup.jpg"),
   },
   {
     id: uuid.v4(),
@@ -75,7 +78,7 @@ export const SecondSaveEverydayData = [
     subtitle: "Try Uber Black",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     is2XL: true,
-    imgURL: require("../assets/test.jpg"),
+    imgURL: require("../pics/luxury1.jpg"),
   },
   {
     id: uuid.v4(),
@@ -83,7 +86,7 @@ export const SecondSaveEverydayData = [
     subtitle: "Try Uber Comfort",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     is2XL: true,
-    imgURL: require("../assets/test.jpg"),
+    imgURL: require("../pics/comfort2.jpg"),
   },
   {
     id: uuid.v4(),
@@ -91,7 +94,7 @@ export const SecondSaveEverydayData = [
     subtitle: "Request UberXL",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     is2XL: true,
-    imgURL: require("../assets/test.jpg"),
+    imgURL: require("../pics/xlGroup2.jpg"),
   },
 
   {
@@ -100,7 +103,7 @@ export const SecondSaveEverydayData = [
     subtitle: "Try Connect",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     is2XL: true,
-    imgURL: require("../assets/test.jpg"),
+    imgURL: require("../pics/move.jpg"),
   },
   {
     id: uuid.v4(),
@@ -108,7 +111,7 @@ export const SecondSaveEverydayData = [
     subtitle: "Try Reserve",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     is2XL: true,
-    imgURL: require("../assets/test.jpg"),
+    imgURL: require("../pics/scheduleRide.jpg"),
   },
   {
     id: uuid.v4(),
@@ -116,7 +119,7 @@ export const SecondSaveEverydayData = [
     subtitle: "Ride with Uber",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     is2XL: true,
-    imgURL: require("../assets/test.jpg"),
+    imgURL: require("../pics/tryUber.jpg"),
   },
 ];
 
@@ -127,6 +130,7 @@ export const PlanTripData = [
     subtitle: "Take the wheel and get going",
     url: "https://www.uber.com/global/en/sign-in/",
     isXL: true,
+    imgURL: require("../pics/rentKeys2.jpg"),
   },
   {
     id: uuid.v4(),
@@ -134,6 +138,7 @@ export const PlanTripData = [
     subtitle: "Room for the whole crew and bags",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     isXL: true,
+    imgURL: require("../pics/xlGroup1.jpg"),
   },
   {
     id: uuid.v4(),
@@ -141,6 +146,7 @@ export const PlanTripData = [
     subtitle: "Book up to 90 days ahead",
     url: "https://www.uber.com/global/en/sign-in/",
     isXL: true,
+    imgURL: require("../pics/reserve1.jpg"),
   },
 ];
 
@@ -151,6 +157,7 @@ export const TravelEasyData = [
     subtitle: "Get to the airport stress-free",
     url: "https://www.uber.com/global/en/sign-in/",
     isXL: true,
+    imgURL: require("../pics/reserve3.jpg"),
   },
   {
     id: uuid.v4(),
@@ -158,6 +165,7 @@ export const TravelEasyData = [
     subtitle: "Fit your crew & luggage, easily",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     isXL: true,
+    imgURL: require("../pics/xlGroup3.jpg"),
   },
   {
     id: uuid.v4(),
@@ -165,6 +173,7 @@ export const TravelEasyData = [
     subtitle: "Check out a new city with ease",
     url: "https://www.uber.com/global/en/sign-in/",
     isXL: true,
+    imgURL: require("../pics/rental.jpg"),
   },
   {
     id: uuid.v4(),
@@ -172,6 +181,7 @@ export const TravelEasyData = [
     subtitle: "Elevated services, high-end cars",
     url: "https://www.uber.com/global/en/sign-in/",
     isXL: true,
+    imgURL: require("../pics/luxury3.jpg"),
   },
   {
     id: uuid.v4(),
@@ -179,6 +189,7 @@ export const TravelEasyData = [
     subtitle: "Delivered on Uber Eats",
     url: "https://www.uber.com/us/en/ride/uber-moto/",
     isXL: true,
+    imgURL: require("../pics/local.jpg"),
   },
   {
     id: uuid.v4(),
@@ -186,5 +197,6 @@ export const TravelEasyData = [
     subtitle: "Discover new places affordably",
     url: "https://www.uber.com/global/en/sign-in/",
     isXL: true,
+    imgURL: require("../pics/twoWheels.jpg"),
   },
 ];

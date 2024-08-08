@@ -45,7 +45,7 @@ export const Tile = ({ item }) => {
           </View>
         ) : item.isXL ? (
           <>
-            <Image style={styles.img} source={require("../assets/test.jpg")} />
+            <Image style={styles.img} source={item.imgURL} />
             <View style={tw`flex-row items-center justify-start`}>
               <Text style={tw`pr-1 text-sm font-semibold`}>{item.title}</Text>
               <Icon name="arrow-forward-outline" type="ionicon" size={16} />
