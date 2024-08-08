@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { Icon } from "react-native-elements";
+import { Icon, Image } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
 import uuid from "react-native-uuid";
 import {
@@ -32,7 +32,7 @@ const ProfileScreen = () => {
           <OpenURL key={uuid.v4()} url={item.url}>
             <View style={styles.shortcutContent}>
               <Icon name={item.icon} type="ionicon" />
-              <Text style={styles.text}> {item.title}</Text>
+              <Text style={tw`pt-2`}> {item.title}</Text>
             </View>
           </OpenURL>
         ))}
@@ -47,12 +47,7 @@ const ProfileScreen = () => {
                 <Text style={styles.header}>{item.title}</Text>
                 <Text style={styles.subheader}>{item.subtitle}</Text>
               </View>
-              <Icon
-                name={item.icon}
-                type="ionicon"
-                color={item.color}
-                size={32}
-              />
+              <Image style={styles.smallImg} source={item.imgURL} />
             </View>
           </OpenURL>
         ))}
@@ -101,11 +96,16 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     backgroundColor: "#e3e3e3",
     paddingVertical: 15,
     paddingHorizontal: 25,
     borderRadius: 10,
     marginTop: 12,
+  },
+  smallImg: {
+    height: 60,
+    width: 60,
   },
   header: {
     fontSize: 14,

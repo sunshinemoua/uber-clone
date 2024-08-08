@@ -23,6 +23,7 @@ export const quicklinksData = [
     icon: "car-sport-sharp",
     color: "#ce2648",
     url: "https://messages.uber.com/public/messages/6d158325-fcb4-468a-bab8-acb7ed3c1800",
+    imgURL: require("../pics/uber1.png"),
   },
   {
     title: "Safety checkup",
@@ -30,6 +31,7 @@ export const quicklinksData = [
     icon: "bar-chart-sharp",
     color: "blue",
     url: "https://www.uber.com/us/en/safety/",
+    imgURL: require("../pics/safety2.png"),
   },
   {
     title: "Privacy checkup",
@@ -37,6 +39,7 @@ export const quicklinksData = [
     icon: "lock-closed",
     color: "#333333",
     url: "https://privacy.uber.com/center",
+    imgURL: require("../pics/privacy.png"),
   },
 ];
 
